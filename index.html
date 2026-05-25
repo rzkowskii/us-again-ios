@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://usagain.app/">
+  <title>Us Again - A Private Card Game For Two</title>
+  <meta name="description" content="Us Again is a private, low-pressure card game for couples. Visit the official site for product details.">
+  <style>
+    :root {
+      --paper: #f4eee5;
+      --paper-soft: #fffaf0;
+      --ink: #35251f;
+      --muted: #765f55;
+      --clay: #b4523d;
+      --clay-dark: #8f3e2f;
+      --moss: #667952;
+      --line: rgba(53, 37, 31, 0.14);
+      --shadow: rgba(53, 37, 31, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-rounded, "SF Pro Rounded", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--paper);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .shell {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 22px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.08rem;
+      text-decoration: none;
+    }
+
+    .mark {
+      position: relative;
+      width: 34px;
+      height: 20px;
+      flex: 0 0 auto;
+    }
+
+    .mark::before,
+    .mark::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: var(--clay);
+    }
+
+    .mark::before {
+      left: 2px;
+      box-shadow: 8px 0 0 rgba(102, 121, 82, 0.5);
+    }
+
+    .mark::after {
+      right: 2px;
+      background: rgba(180, 82, 61, 0.68);
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: 0.96rem;
+      text-decoration: none;
+    }
+
+    .hero {
+      border-top: 0;
+      min-height: 92vh;
+      display: grid;
+      align-content: center;
+      gap: 42px;
+      padding: 26px 0 48px;
+    }
+
+    .hero-copy {
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--moss);
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 4.2rem;
+      line-height: 0.98;
+      font-weight: 800;
+    }
+
+    .pitch {
+      max-width: 680px;
+      margin: 22px auto 0;
+      color: var(--muted);
+      font-size: 1.32rem;
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      background: var(--clay);
+      color: #fffaf5;
+      box-shadow: 0 14px 34px rgba(180, 82, 61, 0.24);
+    }
+
+    .button.primary:hover,
+    .button.primary:focus {
+      background: var(--clay-dark);
+    }
+
+    .button.secondary {
+      border-color: var(--line);
+      color: var(--ink);
+      background: rgba(255, 250, 240, 0.62);
+    }
+
+    .hero-shots {
+      display: grid;
+      grid-template-columns: 0.8fr 1fr 0.8fr;
+      gap: 22px;
+      align-items: end;
+      width: min(900px, 100%);
+      margin: 0 auto;
+    }
+
+    .shot {
+      overflow: hidden;
+      border: 1px solid rgba(53, 37, 31, 0.1);
+      border-radius: 28px;
+      background: var(--paper-soft);
+      box-shadow: 0 22px 58px var(--shadow);
+    }
+
+    .shot.main {
+      transform: translateY(-18px);
+    }
+
+    .shot img {
+      width: 100%;
+    }
+
+    section {
+      padding: 72px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.2rem;
+      line-height: 1.1;
+    }
+
+    .section-heading p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.6;
+    }
+
+    .steps,
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step,
+    .fact {
+      min-height: 150px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 250, 240, 0.72);
+    }
+
+    .step strong,
+    .fact strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+
+    .step p,
+    .fact p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .screens {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .screen-item {
+      display: grid;
+      gap: 12px;
+    }
+
+    .screen-item img {
+      border-radius: 24px;
+      border: 1px solid rgba(53, 37, 31, 0.1);
+      box-shadow: 0 16px 38px rgba(53, 37, 31, 0.14);
+    }
+
+    .screen-item h3 {
+      margin: 0;
+      font-size: 1.03rem;
+    }
+
+    .screen-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .boundary {
+      padding-bottom: 88px;
+    }
+
+    .boundary-box {
+      padding: 28px;
+      border: 1px solid rgba(180, 82, 61, 0.24);
+      border-radius: 8px;
+      background: rgba(255, 250, 240, 0.7);
+    }
+
+    .boundary-box h2 {
+      margin: 0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+    }
+
+    .boundary-box p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 28px 0 42px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        min-height: auto;
+        padding-top: 24px;
+      }
+
+      h1 {
+        font-size: 3.2rem;
+      }
+
+      .pitch {
+        font-size: 1.12rem;
+      }
+
+      .hero-shots {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .shot {
+        border-radius: 20px;
+      }
+
+      .steps,
+      .facts,
+      .screens {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .shell {
+        width: min(100% - 28px, 520px);
+      }
+
+      .topbar {
+        align-items: flex-start;
+      }
+
+      .nav-link {
+        display: none;
+      }
+
+      .hero {
+        gap: 28px;
+        padding-bottom: 36px;
+      }
+
+      .hero-copy {
+        text-align: left;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+      }
+
+      .pitch {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .actions {
+        justify-content: flex-start;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-shots {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-shots .shot:last-child {
+        display: none;
+      }
+
+      .shot.main {
+        transform: none;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .steps,
+      .facts,
+      .screens {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="https://usagain.app" aria-label="Visit the official Us Again site">
+      <span class="mark" aria-hidden="true"></span>
+      <span>Us Again</span>
+    </a>
+    <a class="nav-link" href="https://usagain.app">Official site</a>
+  </header>
+
+  <main>
+    <section class="shell hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Private. Local-first. Low pressure.</p>
+        <h1 id="hero-title">Us Again</h1>
+        <p class="pitch">A warm card game for couples: pick a deck, answer a few prompts, pass anything, and keep the moment easy.</p>
+        <div class="actions">
+          <a class="button primary" href="https://usagain.app">Visit the official site</a>
+          <a class="button secondary" href="https://usagain.app/privacy">Read the privacy policy</a>
+        </div>
+      </div>
+      <div class="hero-shots" aria-label="Us Again product screenshots">
+        <figure class="shot"><img src="screenshots/play-home.png" alt="Us Again deck picker and Today's Card screen"></figure>
+        <figure class="shot main"><img src="screenshots/todays-card.png" alt="Us Again Today's Card active session screen"></figure>
+        <figure class="shot"><img src="screenshots/round-complete.png" alt="Us Again round complete screen"></figure>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-heading">
+          <h2>How It Works</h2>
+          <p>Us Again keeps the ritual simple enough for date night, couch time, a road trip, or a quick round before bed.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><strong>Pick a starting point.</strong><p>Use Today's Card, a curated mini-deck, or browse the full library.</p></div>
+          <div class="step"><strong>Answer together.</strong><p>Take turns with prompts built for small, honest, playful conversation.</p></div>
+          <div class="step"><strong>Pass anytime.</strong><p>Skip any card without pressure or explanation.</p></div>
+          <div class="step"><strong>Keep it private.</strong><p>Notes, finished rounds, reminders, and exports stay on your device.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-heading">
+          <h2>Product Screenshots</h2>
+          <p>Real app screens from the iPhone and iPad product.</p>
+        </div>
+        <div class="screens">
+          <article class="screen-item">
+            <img src="screenshots/play-home.png" alt="Deck picker and Today's Card screen">
+            <h3>Ready for a round</h3>
+            <p>Start from Today's Card, a random mix, or a curated deck.</p>
+          </article>
+          <article class="screen-item">
+            <img src="screenshots/todays-card.png" alt="Today's Card active prompt screen">
+            <h3>Low-pressure prompts</h3>
+            <p>One card at a time, with pass built into the rhythm.</p>
+          </article>
+          <article class="screen-item">
+            <img src="screenshots/round-complete.png" alt="Round complete screen with optional note">
+            <h3>Finished-round notes</h3>
+            <p>Save a private note or finish without adding anything.</p>
+          </article>
+          <article class="screen-item">
+            <img src="screenshots/private-settings.png" alt="Private settings screen on iPad">
+            <h3>Private by default</h3>
+            <p>Names, haptics, reminders, and unlock state are handled locally.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-heading">
+          <h2>Product Facts</h2>
+          <p>Concise facts for anyone landing here from GitHub.</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><strong>430 cards</strong><p>Across 14 categories for different moods and moments.</p></div>
+          <div class="fact"><strong>8 mini-decks</strong><p>Including Start Here, Date Night, Long Drive, and Five-Minute Bedtime.</p></div>
+          <div class="fact"><strong>No account</strong><p>No tracking, no cloud login, and no internet required to play.</p></div>
+          <div class="fact"><strong>iPhone and iPad</strong><p>Designed for warm, quiet use on both screen sizes.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="boundary">
+      <div class="shell boundary-box">
+        <h2>Source Code Boundary</h2>
+        <p>This GitHub repository intentionally publishes only promotional static files and public-safe product screenshots. The iOS source code, build files, private configuration, internal documentation, and release materials are not published here.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <span>Us Again public promo stub.</span>
+    <span> Visit <a href="https://usagain.app">usagain.app</a> for the official product site.</span>
+  </footer>
+</body>
+</html>
